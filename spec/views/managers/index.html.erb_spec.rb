@@ -5,11 +5,11 @@ RSpec.describe "managers/index", type: :view do
     assign(:managers, [
       Manager.create!(
         :name => "Name",
-        :league => nil
+        :league => create(:league, name: "LeagueName"),
       ),
       Manager.create!(
         :name => "Name",
-        :league => nil
+        :league => create(:league, name: "LeagueName"),
       )
     ])
   end
@@ -17,6 +17,6 @@ RSpec.describe "managers/index", type: :view do
   it "renders a list of managers" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => "LeagueName".to_s, :count => 2
   end
 end

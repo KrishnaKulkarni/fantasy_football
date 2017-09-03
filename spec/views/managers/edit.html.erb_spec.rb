@@ -4,7 +4,7 @@ RSpec.describe "managers/edit", type: :view do
   before(:each) do
     @manager = assign(:manager, Manager.create!(
       :name => "MyString",
-      :league => nil
+      :league => create(:league),
     ))
   end
 

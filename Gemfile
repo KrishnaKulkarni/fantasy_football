@@ -43,7 +43,6 @@ group :development, :test do
   gem "capybara", "~> 2.8"
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'factory_girl'
-  gem 'pry-rails'
 end
 
 group :development do

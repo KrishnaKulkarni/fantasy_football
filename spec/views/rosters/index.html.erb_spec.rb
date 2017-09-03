@@ -5,12 +5,12 @@ RSpec.describe "rosters/index", type: :view do
     assign(:rosters, [
       Roster.create!(
         :name => "Name",
-        :manager => nil,
+        :manager => create(:manager, name: "ManagerName"),
         :structure => ""
       ),
       Roster.create!(
         :name => "Name",
-        :manager => nil,
+        :manager => create(:manager, name: "ManagerName"),
         :structure => ""
       )
     ])
@@ -19,7 +19,7 @@ RSpec.describe "rosters/index", type: :view do
   it "renders a list of rosters" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => "ManagerName".to_s, :count => 2
     assert_select "tr>td", :text => "".to_s, :count => 2
   end
 end

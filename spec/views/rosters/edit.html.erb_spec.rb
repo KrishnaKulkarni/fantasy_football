@@ -4,7 +4,7 @@ RSpec.describe "rosters/edit", type: :view do
   before(:each) do
     @roster = assign(:roster, Roster.create!(
       :name => "MyString",
-      :manager => nil,
+      :manager => create(:manager),
       :structure => ""
     ))
   end

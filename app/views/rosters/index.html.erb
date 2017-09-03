@@ -16,7 +16,7 @@
     <% @rosters.each do |roster| %>
       <tr>
         <td><%= roster.name %></td>
-        <td><%= roster.manager %></td>
+        <td><%= roster.manager_name %></td>
         <td><%= roster.structure %></td>
         <td><%= link_to 'Show', roster %></td>
         <td><%= link_to 'Edit', edit_roster_path(roster) %></td>
