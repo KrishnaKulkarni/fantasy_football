@@ -8,7 +8,7 @@ RSpec.describe "players/edit", type: :view do
       :private_value => "9.99",
       :public_value => "9.99",
       :roster => nil,
-      :league => nil
+      :league => create(:league),
     ))
   end
 

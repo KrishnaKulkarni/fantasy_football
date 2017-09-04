@@ -9,9 +9,8 @@ class Player < ApplicationRecord
   }
   validates :name, :position, :public_value, presence: true
 
-  belongs_to :roster
+  belongs_to :roster, required: false
   belongs_to :league
-  validates :league, presence: true
   delegate :name, to: :roster, prefix: true, allow_nil: true
   delegate :name, to: :league, prefix: true
 end
