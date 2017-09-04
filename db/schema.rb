@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901231629) do
+ActiveRecord::Schema.define(version: 20170903223709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 20170901231629) do
     t.index ["league_id"], name: "index_managers_on_league_id", using: :btree
   end
 
+  create_table "players", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.decimal  "private_value", precision: 5, scale: 2
+    t.decimal  "public_value",  precision: 5, scale: 2
+    t.integer  "roster_id"
+    t.integer  "league_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.index ["league_id"], name: "index_players_on_league_id", using: :btree
+    t.index ["position"], name: "index_players_on_position", using: :btree
+    t.index ["roster_id"], name: "index_players_on_roster_id", using: :btree
+  end
+
   create_table "rosters", force: :cascade do |t|
     t.string   "name"
     t.integer  "manager_id"
@@ -40,5 +54,6 @@ ActiveRecord::Schema.define(version: 20170901231629) do
   end
 
   add_foreign_key "managers", "leagues"
+  add_foreign_key "players", "leagues"
   add_foreign_key "rosters", "managers"
 end
