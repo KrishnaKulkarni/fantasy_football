@@ -13,4 +13,6 @@ class Player < ApplicationRecord
   belongs_to :league
   delegate :name, to: :roster, prefix: true, allow_nil: true
   delegate :name, to: :league, prefix: true
+
+  scope :ranked, -> { order(public_value: :desc) }
 end

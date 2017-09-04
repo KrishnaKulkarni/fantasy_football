@@ -1,0 +1,23 @@
+<table class="draftable">
+  <thead>
+    <tr>
+      <th><strong><%= title %></strong></th>
+      <th>Public</th>
+      <th>Private</th>
+      <th>Likely Bid</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td><%= player.public_value %></td>
+        <td><%= player.private_value %></td>
+        <td> ? </td>
+        <td> ?? </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

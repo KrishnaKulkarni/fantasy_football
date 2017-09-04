@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Draft</h1>
+
+<p>
+  <strong>League:</strong>
+  <%= @league.name %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @league.size %>
+</p>
+
+<div>
+  <%= link_to 'Back', leagues_path %>
+</div>
+
+<%= render 'draftable_players_table', title: "RB", players: @league.players.RB.ranked %>
+<%= render 'draftable_players_table', title: "WR", players: @league.players.WR.ranked %>
+<%= render 'draftable_players_table', title: "QB", players: @league.players.QB.ranked %>
+<%= render 'draftable_players_table', title: "TE", players: @league.players.TE.ranked %>
+

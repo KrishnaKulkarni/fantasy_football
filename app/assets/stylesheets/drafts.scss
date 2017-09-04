@@ -1,0 +1,12 @@
+// Place all the styles related to the rosters controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.draftable {
+  display: block;
+  float: left;
+  margin-right: 1em;
+
+  td, th {
+    font-size: .8em;
+  }
+}
