@@ -39,11 +39,13 @@ class Roster < ApplicationRecord
   has_many :players
 
   def spend_amounts
-    SPEND_AMOUNTS.map do |position, ratios|
+    initial_ratios = SPEND_AMOUNTS.map do |position, ratios|
       count = send(position)
       ratio = count > 0 ? ratios[send(position) - 1] : 0.0
-      [position, ratio * budget]
-    end.to_h
+      [position, ratio]
+    end
+    sum_of_ratios = initial_ratios.map(&:last).sum
+    initial_ratios.map { |position, ratio| [position, budget * ratio / sum_of_ratios] }.to_h
   end
 
   def draft(player, cost)
