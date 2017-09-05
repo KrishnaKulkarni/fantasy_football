@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903223709) do
+ActiveRecord::Schema.define(version: 20170904222129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,15 @@ ActiveRecord::Schema.define(version: 20170903223709) do
   create_table "rosters", force: :cascade do |t|
     t.string   "name"
     t.integer  "manager_id"
-    t.json     "structure"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "budget",     default: 200
+    t.integer  "RB",         default: 0
+    t.integer  "WR",         default: 0
+    t.integer  "QB",         default: 0
+    t.integer  "TE",         default: 0
+    t.integer  "K",          default: 0
+    t.integer  "DEF",        default: 0
     t.index ["manager_id"], name: "index_rosters_on_manager_id", using: :btree
   end
 
