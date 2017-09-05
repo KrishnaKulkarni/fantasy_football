@@ -11,3 +11,20 @@
     font-size: .8em;
   }
 }
+
+.summary {
+  display: block;
+  float: left;
+  margin-right: 10em;
+  margin-bottom: 3em;
+
+  p {
+    margin: 13px 0;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

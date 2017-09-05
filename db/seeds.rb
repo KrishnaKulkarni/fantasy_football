@@ -7,14 +7,27 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ActiveRecord::Base.transaction do
-  leagues = [{:name=>"Browntown", :size=>10}]
+  leagues = [{:name=>"Healthifantasy", :size=>12}]
   leagues.each { |l| League.create!(l) }
 
-  managers = [{:name=>"Krishna", :league=> League.first }, {:name=>"Chiraag", :league=> League.first }, {:name=>"Ashish", :league=> League.first }]
-  managers.each { |m| Manager.create!(m) }
-
-  rosters = [{:name=>"Krishna's Team", :manager => Manager.first }, {:name=>"Chiraag's Team", :manager => Manager.second }, {:name=>"Ashish's Team", :manager => Manager.third }]
-  rosters.each { |r| Roster.create!(r) }
+  managers = [
+    {:name=>"Krishna"},
+    {:name=>"Daniel"},
+    {:name=>"Kailyn"},
+    {:name=>"Luke"},
+    {:name=>"Joshua"},
+    {:name=>"Chet"},
+    {:name=>"Eric"},
+    {:name=>"Sara"},
+    {:name=>"Brady"},
+    {:name=>"Kojo"},
+    {:name=>"Cam"},
+    {:name=>"Mihir"},
+  ]
+  managers.each do |m|
+    manager = Manager.create!({league: League.first}.merge(m))
+    Roster.create!(Roster::POSITIONS_NEEDED.merge(manager: manager, name: "#{manager.name}'s Roster"))
+  end
 
   def standardize_name(name)
     name.gsub(/(j|J|s|S)r\.?/, "").delete(".").delete("'").titleize.strip
@@ -79,7 +92,7 @@ ActiveRecord::Base.transaction do
     end
   end
 
-  path = "beersheets.csv"
+  path = "beersheets12.csv"
   require "csv"
   rows = CSV.readlines(path, headers: true).map(&:to_h)
   names = []

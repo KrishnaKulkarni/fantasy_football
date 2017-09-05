@@ -15,5 +15,5 @@ class Player < ApplicationRecord
   delegate :name, to: :league, prefix: true
 
   scope :available, -> { where.not(private_value: nil).where(roster_id: nil) }
-  scope :ranked, -> { available.order(public_value: :desc).limit(40) }
+  scope :ranked, -> { available.order(public_value: :desc) }
 end

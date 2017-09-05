@@ -4,6 +4,7 @@ class DraftsController < ApplicationController
   # GET /leagues/1/draft
   # GET /leagues/1/draft
   def show
+    @scarcity_data = ScarcityIndicator.run(@league)
   end
 
   private

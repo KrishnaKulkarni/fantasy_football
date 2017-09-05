@@ -16,6 +16,12 @@
   <%= link_to 'Back', leagues_path %>
 </div>
 
+<section class="clearfix">
+  <% @scarcity_data.each do |title, data| %>
+    <%= render 'scarcity_summary', title: title, data: data %>
+  <% end %>
+</section>
+
 <%= render 'draftable_players_table', title: "RB", players: @league.players.RB.ranked %>
 <%= render 'draftable_players_table', title: "WR", players: @league.players.WR.ranked %>
 <%= render 'draftable_players_table', title: "QB", players: @league.players.QB.ranked %>
