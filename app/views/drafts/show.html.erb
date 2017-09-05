@@ -2,15 +2,25 @@
 
 <h1>Draft</h1>
 
-<p>
+<div>
   <strong>League:</strong>
   <%= @league.name %>
-</p>
-
-<p>
   <strong>Size:</strong>
   <%= @league.size %>
-</p>
+
+  <%= form_tag(league_draft_path(@league), method: :patch) do %>
+    <%= text_field_tag :player_id, nil, placeholder: "Player ID" %>
+    <%= text_field_tag :roster_id, nil, placeholder: "Roster ID" %>
+    <%= number_field_tag :cost, nil, placeholder: "Cost" %>
+    <%= submit_tag 'Draft' %>
+  <% end %>
+
+  <ul>
+    <% @league.rosters.select(:name, :id).order(:name).each do |roster| %>
+      <li><%= "#{roster.id} #{roster.name}" %></li>
+    <% end %>
+  </ul>
+</div>
 
 <div>
   <%= link_to 'Back', leagues_path %>
@@ -22,9 +32,9 @@
   <% end %>
 </section>
 
+<%= render 'draftable_players_table', title: "QB", players: @league.players.QB.ranked %>
 <%= render 'draftable_players_table', title: "RB", players: @league.players.RB.ranked %>
 <%= render 'draftable_players_table', title: "WR", players: @league.players.WR.ranked %>
-<%= render 'draftable_players_table', title: "QB", players: @league.players.QB.ranked %>
 <%= render 'draftable_players_table', title: "TE", players: @league.players.TE.ranked %>
 <%= render 'draftable_players_table', title: "DEF", players: @league.players.DEF.ranked %>
 <%= render 'draftable_players_table', title: "K", players: @league.players.K.ranked %>
